@@ -10,9 +10,9 @@ A simple web app that generates multiplication tables for any number from 1 to 1
 - Input validation to ensure correct data entry.
   
 ## Demo
-For live demo [ckick here](https://muhammad-aqib-bashir.github.io/table-writer/) or can use link below
+For live demo [ckick here](https://muhammad-aqib-bashir.github.io/table-generator/) or can use link below
 ```markdown
-https://muhammad-aqib-bashir.github.io/table-writer/
+https://muhammad-aqib-bashir.github.io/table-generator/
 ```
 
 ## How It Works
@@ -27,7 +27,7 @@ To use the app locally, follow these steps:
 
 1. **Download or Clone the Repository**:
    ```bash
-   git clone https://github.com/Muhammad-Aqib-Bashir/table-writer.git
+   git clone https://github.com/Muhammad-Aqib-Bashir/table-generator.git
    ```
    
 2. **Open the `index.html` file** in your browser:
