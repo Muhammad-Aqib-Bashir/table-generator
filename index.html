@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h3>Multiplication Table Generator</h3>
+
+  <div class="inputs-container">
+    <label for="table-number">Table for</label>
+    <input type="number" id="table-number" min="1" max="1000" value="2" class="table-number js">
+    
+    <label for="table-boundry">Up to</label>
+    <input type="number" id="table-boundry" min="1" max="50" value="10" class="table-boundry js">
+    
+    <button class="write-btn js">Generate Table</button>
+  </div>
+
+  <div class="error js">Please enter valid values: Table for (1–1000) and Limit (1–50).</div>
+  <div class="output-container js"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

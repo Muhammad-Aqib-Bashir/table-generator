@@ -1,0 +1,120 @@
+/* Global Styling */
+body {
+  margin: 0;
+  padding: 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h3 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.inputs-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Input and Button Styling */
+input[type="number"], button {
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+input[type="number"] {
+  width: 70px;
+  text-align: center;
+}
+
+input[type="number"]:focus {
+  outline: 2px solid #3498db;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  padding: 8px 16px;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+/* Output Container and Table Styling */
+.output-container {
+  width: 100%;
+  max-width: 500px;
+}
+
+.table-container {
+  border-collapse: collapse;
+  border-radius: 10px;
+  width: 100%;
+  margin-top: 15px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.table-container th,
+.table-container td {
+  padding: 15px;
+  text-align: center;
+  font-size: 1rem;
+  color: #34495e;
+}
+
+.table-container tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.table-container tr:nth-child(odd) {
+  background-color: #ecf0f1;
+}
+
+.table-container th {
+  background-color: #2980b9;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.05rem;
+}
+
+/* Error Message Styling */
+.error {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.error.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+input[type="number"].error {
+  outline: 2px solid #e74c3c;
+}
