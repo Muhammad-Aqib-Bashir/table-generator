@@ -122,7 +122,7 @@ input[type="number"].error {
 /* Media Queries for Responsiveness */
 
 /* Small screens and mobile devices */
-@media (max-width: 600px) {
+@media (max-width: 493px) {
   h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;
