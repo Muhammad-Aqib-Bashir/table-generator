@@ -13,8 +13,8 @@ function generateTable() {
   // Clear previous content and error messages
   tableContainer.innerHTML = "";
   errorContainer.classList.remove("visible");
-  numberInput.classList.remove("error");
-  boundryInput.classList.remove("error");
+  numberInput.classList.remove("error-input");
+  boundryInput.classList.remove("error-input");
 
   // Validation logic
   const isValidNumber = tableNumber >= 1 && tableNumber <= 1000;
@@ -23,7 +23,7 @@ function generateTable() {
   if (!isValidNumber) {
     errorContainer.textContent = "Please enter a valid number (1–1000) for 'Table of'.";
     errorContainer.classList.add("visible");
-    numberInput.classList.add("error");
+    numberInput.classList.add("error-input");
     numberInput.focus(); // Focus on the invalid 'Table of' input
     return;
   }
@@ -31,7 +31,7 @@ function generateTable() {
   if (!isValidBoundry) {
     errorContainer.textContent = "Please enter a valid number (1–50) for 'Up to'.";
     errorContainer.classList.add("visible");
-    boundryInput.classList.add("error");
+    boundryInput.classList.add("error-input");
     boundryInput.focus();
     return;
   }

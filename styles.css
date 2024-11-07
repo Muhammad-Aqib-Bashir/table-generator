@@ -120,7 +120,7 @@ button:hover {
   opacity: 1;
 }
 
-input[type="number"].error {
+.error-input {
   outline: 2px solid #e74c3c;
 }
 
@@ -131,6 +131,7 @@ input[type="number"].error {
   body {
     padding: 40px 20px;
   }
+
   h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;
@@ -139,13 +140,11 @@ input[type="number"].error {
   /* Stack input fields vertically with smaller padding */
   .inputs-container {
     gap: 0px;
-    width: 100%;
   }
 
   input[type="number"], button, label {
     font-size: 12px;
     padding: 10px 5px;
-    /* width: 90%; */
   }
   
   button {
@@ -176,7 +175,6 @@ input[type="number"].error {
 
   .inputs-container {
     gap: 10px;
-    width: 100%;
   }
 
   input[type="number"], button {
