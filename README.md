@@ -10,7 +10,7 @@ A simple web app that generates multiplication tables for any number from 1 to 1
 - Input validation to ensure correct data entry.
   
 ## Demo
-For live demo [ckick here](https://muhammad-aqib-bashir.github.io/table-generator/) or can use link below
+For live demo [click here](https://muhammad-aqib-bashir.github.io/table-generator/) or can use link below
 ```markdown
 https://muhammad-aqib-bashir.github.io/table-generator/
 ```
