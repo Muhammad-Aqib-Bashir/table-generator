@@ -39,8 +39,13 @@ input[type="number"], button {
   transition: border-color 0.3s, background-color 0.3s;
 }
 
+button, label {
+  min-width: fit-content;
+}
+
 input[type="number"] {
   width: 70px;
+  min-width: 40px;
   text-align: center;
 }
 
@@ -122,7 +127,10 @@ input[type="number"].error {
 /* Media Queries for Responsiveness */
 
 /* Small screens and mobile devices */
-@media (max-width: 493px) {
+@media (max-width: 600px) {
+  body {
+    padding: 40px 20px;
+  }
   h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;
@@ -130,14 +138,18 @@ input[type="number"].error {
 
   /* Stack input fields vertically with smaller padding */
   .inputs-container {
-    gap: 12px;
+    gap: 0px;
     width: 100%;
   }
 
-  input[type="number"], button {
-    font-size: 1rem;
-    padding: 10px;
-    width: 90%;
+  input[type="number"], button, label {
+    font-size: 12px;
+    padding: 10px 5px;
+    /* width: 90%; */
+  }
+  
+  button {
+    margin-left: 6px;
   }
 
   .table-container th,
