@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://muhammad-aqib-bashir.github.io/table-generator/
