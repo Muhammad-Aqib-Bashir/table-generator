@@ -126,8 +126,7 @@ button:hover {
 
 /* Output Container and Table Styling */
 .output-container {
-  width: 100%;
-  max-width: 500px;
+  min-width: 400px;
   margin-bottom: 50px;
 }
 
@@ -183,68 +182,56 @@ button:hover {
   outline: 2px solid var(--color-error);
 }
 
-/* Media Queries for Responsiveness */
+/* Media Queries */
 
-/* Small screens and mobile devices */
+/* Small devices (phones, < 600px) */
 @media (max-width: 600px) {
-  body {
-    padding: 40px 20px;
-  }
-
   h3 {
-    font-size: var(--font-size-medium);
-    margin-bottom: 15px;
+    font-size: 20px;
+    margin-bottom: 16px;
   }
 
   .inputs-container {
-    gap: 0px;
+    gap: 4px;
   }
 
   input[type="number"],
-  button,
   label {
-    font-size: 12px;
-    padding: 10px 5px;
+    font-size: var(--font-size-small);
+    padding: 8px 6px;
   }
 
   button {
-    margin-left: 6px;
+    margin-left: 4px;
+    padding: 8px 6px;
+    font-size: 14px;
+  }
+
+  .output-container {
+    min-width: 300px;
   }
 
   .table-container th,
   .table-container td {
     padding: 8px;
-    font-size: var(--font-size-xsmall);
-  }
-
-  .table-container {
-    max-width: 100%;
-  }
-
-  .table-container td {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 }
 
-/* Medium screens (tablets and small laptops) */
+/* Medium devices (tablets, 601px - 1024px) */
 @media (min-width: 601px) and (max-width: 1024px) {
   h3 {
-    font-size: 1.7rem;
-  }
-
-  .inputs-container {
-    gap: var(--gap-small);
+    font-size: 1.8rem;
   }
 
   input[type="number"],
   button {
-    font-size: 1.1rem;
-    padding: 12px;
+    font-size: 1rem;
+    padding: 10px 12px;
   }
 
   .table-container th,
   .table-container td {
-    padding: 10px;
-    font-size: var(--font-size-base);
+    padding: 12px;
   }
 }
