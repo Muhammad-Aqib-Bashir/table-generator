@@ -1,50 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Generate multiplication tables easily with this simple and interactive tool. Input a number and a limit to instantly see the table.">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="Your Name">
-  <meta name="keywords" content="Multiplication table generator, online table generator, math tools, multiplication calculator">
-  
-  <title>Multiplication Table Generator</title>
-  
-  <!-- Canonical link for SEO -->
-  <link rel="canonical" href="https://muhammad-aqib-bashir.github.io/table-generator/">
-  
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
-  
-  <!-- Structured data for SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Multiplication Table Generator",
-    "description": "Generate multiplication tables easily with this simple and interactive tool. Input a number and a limit to instantly see the table.",
-    "url": "https://muhammad-aqib-bashir.github.io/table-generator/"
-  }
-  </script>
-  <!-- Google Site Verification -->
-  <meta name="google-site-verification" content="b5u1dbb1Fe77AFuDYEVjuFqZe6uXr1ec8IaFVAgKizY" />
-</head>
-<body>
-  <h3>Multiplication Table Generator</h3>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="logo.png" type="image/png" />
 
-  <div class="inputs-container">
-    <label for="table-number">Table for</label>
-    <input type="number" id="table-number" min="1" max="1000" value="2" class="table-number js">
-    
-    <label for="table-boundry">Up to</label>
-    <input type="number" id="table-boundry" min="1" max="50" value="10" class="table-boundry js">
-    
-    <button class="write-btn js">Generate Table</button>
-  </div>
+    <meta
+      name="description"
+      content="Generate multiplication tables easily with this simple and interactive tool. Input a number and a limit to instantly see the table."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Muhammad Aqib Bashir" />
+    <meta
+      name="keywords"
+      content="multiplication table generator, times table generator, times tables generator, multiplication table maker, table generator, math table generator, generate times tables, math table maker, tables generator, multiplication generator, multiplication chart generator, multiplication table calculator, times table creator, multiplication grid generator, custom multiplication table, multiplication chart 1-1000 printable, random multiplication table generator, times tables random generator, timestable generator, cayley table generator, multiplication randomizer"
+    />
 
-  <div class="error js">Please enter valid values: Table for (1–1000) and Limit (1–50).</div>
-  <div class="output-container js"></div>
+    <title>Multiplication Table Generator</title>
 
-  <script src="script.js"></script>
-</body>
+    <!-- Canonical link for SEO -->
+    <link
+      rel="canonical"
+      href="https://muhammad-aqib-bashir.github.io/table-generator/"
+    />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Multiplication Table Generator",
+        "description": "Generate multiplication tables easily with this simple and interactive tool. Input a number and a limit to instantly see the table.",
+        "url": "https://muhammad-aqib-bashir.github.io/table-generator/",
+        "inLanguage": "en",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Multiplication Table Generator",
+          "url": "https://muhammad-aqib-bashir.github.io/table-generator/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://muhammad-aqib-bashir.github.io/table-generator//logo.png"
+          }
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Muhammad Aqib Bashir"
+          "url": "https://github.com/Muhammad-Aqib-Bashir"
+        },
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://muhammad-aqib-bashir.github.io/table-generator//screenshots//demo.png",
+          "width": 800
+        },
+        "datePublished": "2024-11-07",
+        "dateModified": "2025-08-03",
+        "keywords": [
+          "multiplication table generator",
+          "times table generator",
+          "math table generator",
+          "table generator",
+          "multiplication table",
+          "multiplication table maker",
+          "generate times tables",
+          "math table maker",
+          "multiplication chart generator",
+          "random multiplication table generator",
+          "times table creator",
+          "custom multiplication table",
+          "multiplication table calculator",
+        ]
+      }
+    </script>
+
+    <!-- Google Site Verification -->
+    <meta
+      name="google-site-verification"
+      content="b5u1dbb1Fe77AFuDYEVjuFqZe6uXr1ec8IaFVAgKizY"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <h3>Multiplication Table Generator</h3>
+
+      <div class="inputs-container">
+        <label for="table-number">Table for</label>
+        <input
+          type="number"
+          id="table-number"
+          min="1"
+          value="2"
+          class="table-number js"
+        />
+
+        <label for="table-boundry">Up to</label>
+        <input
+          type="number"
+          id="table-boundry"
+          min="1"
+          value="10"
+          class="table-boundry js"
+        />
+
+        <button class="write-btn js">Generate Table</button>
+      </div>
+
+      <div class="error js"></div>
+    </header>
+
+    <main class="output-container js"></main>
+
+    <script src="script.js"></script>
+  </body>
 </html>
