@@ -182,6 +182,80 @@ button:hover {
   outline: 2px solid var(--color-error);
 }
 
+/* Add to the end of your CSS file */
+
+.print-controls {
+  text-align: center;
+}
+
+.print-btn {
+  background-color: #27ae60;
+  margin-top: var(--padding-base);
+}
+
+.print-btn:hover {
+  background-color: #219653;
+}
+
+/* Print Styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .output-container,
+  .output-container * {
+    visibility: visible;
+  }
+
+  .output-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .table-container {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    width: 100%;
+    font-size: 14pt;
+  }
+
+  .table-container th,
+  .table-container td {
+    padding: 12px 8px;
+    border: 1px solid #ddd;
+  }
+
+  .table-container th {
+    background-color: #f8f9fa !important;
+    color: #000 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Ensure proper page breaks */
+  .table-row {
+    page-break-inside: avoid;
+  }
+
+  /* Hide header and other elements when printing */
+  .header,
+  .print-controls,
+  button {
+    display: none !important;
+  }
+}
+
+/* A4 page size styling for print preview */
+@page {
+  size: A4;
+  margin: 1cm;
+}
+
 /* Media Queries */
 
 /* Small devices (phones, < 600px) */

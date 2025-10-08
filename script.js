@@ -5,6 +5,7 @@ const MIN_VALUE = 1; // number whose table will be
 const numberInput = document.querySelector(".js.table-number");
 const boundryInput = document.querySelector(".js.table-boundry");
 const writeBtn = document.querySelector(".js.write-btn");
+const printBtn = document.querySelector(".js.print-btn");
 const tableContainer = document.querySelector(".js.output-container");
 const errorContainer = document.querySelector(".error.js");
 
@@ -12,6 +13,7 @@ numberInput.setAttribute("max", MAX_TABLE_NUMBER);
 boundryInput.setAttribute("max", MAX_BOUNDARY);
 
 writeBtn.addEventListener("click", generateTable);
+printBtn.addEventListener("click", printTable);
 
 function generateTable() {
   const tableNumber = Number(numberInput.value);
@@ -22,6 +24,9 @@ function generateTable() {
   errorContainer.classList.remove("visible");
   numberInput.classList.remove("error-input");
   boundryInput.classList.remove("error-input");
+
+  // Hide print button initially
+  printBtn.style.display = "none";
 
   // Validation logic
   const isValidNumber =
@@ -50,7 +55,7 @@ function generateTable() {
     <table class="table-container">
       <thead>
         <tr>
-          <th colspan="4">Expression</th>
+          <th colspan="4">Multiplication Table of ${tableNumber}</th>
           <th>Result</th>
         </tr>
       </thead>
@@ -71,4 +76,11 @@ function generateTable() {
 
   tableHTML += `</tbody></table>`;
   tableContainer.innerHTML = tableHTML;
+
+  // Show print button after table is generated
+  printBtn.style.display = "inline-block";
+}
+
+function printTable() {
+  window.print();
 }
