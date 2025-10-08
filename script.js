@@ -9,11 +9,65 @@ const printBtn = document.querySelector(".js.print-btn");
 const tableContainer = document.querySelector(".js.output-container");
 const errorContainer = document.querySelector(".error.js");
 
+const WEB_APP_URL =
+  "https://script.google.com/macros/s/AKfycbwAIgOTd7YkFepktzabWL_R5uEThWzNQP_2I2-znndP0sMLwjkLyzVU8-A9ehIKG4fvgA/execw";
+
 numberInput.setAttribute("max", MAX_TABLE_NUMBER);
 boundryInput.setAttribute("max", MAX_BOUNDARY);
 
 writeBtn.addEventListener("click", generateTable);
 printBtn.addEventListener("click", printTable);
+
+// Global queue to handle log requests sequentially
+let logQueue = Promise.resolve();
+
+// Queued logging function
+function logTable(action) {
+  const tableNumber = Number(document.querySelector(".js.table-number").value);
+  const tableBoundary = Number(
+    document.querySelector(".js.table-boundry").value
+  );
+
+  const payload = {
+    tableNumber,
+    tableBoundary,
+    action,
+  };
+
+  // Add the request to the queue
+  logQueue = logQueue
+    .then(() => sendLogRequest(payload))
+    .catch((err) => {
+      console.error("Logging error:");
+    });
+}
+
+// Actual function to send one log request
+async function sendLogRequest(payload) {
+  try {
+    const response = await fetch(WEB_APP_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(payload),
+    });
+
+    if (!response.ok) {
+      console.error(`Server responded with status ${response.status}`);
+    }
+
+    const result = await response.json();
+    if (result.status !== "success") {
+      console.warn("Logging failed:", result);
+    } else {
+      console.log(`Logged successfully: ${payload.action}`);
+    }
+
+    // Optional: add a small delay to prevent rate-limiting
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  } catch (err) {
+    console.error("Failed to complete log");
+  }
+}
 
 function generateTable() {
   const tableNumber = Number(numberInput.value);
@@ -79,8 +133,13 @@ function generateTable() {
 
   // Show print button after table is generated
   printBtn.style.display = "inline-block";
+
+  // Fire-and-forget log generation
+  logTable("generate");
 }
 
 function printTable() {
+  // Fire-and-forget log print, then immediately print
+  logTable("print");
   window.print();
 }
