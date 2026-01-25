@@ -32,22 +32,19 @@
   --shadow-default: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Global Styling */
+/* ===== GLOBAL STYLES ===== */
 body {
   margin: 0;
   padding: 0;
-  /* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;/ */
-  font-family: "Inter", sans-serif;
-
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+  min-height: 100vh;
 }
 
+/* ===== LAYOUT COMPONENTS ===== */
 .header {
   text-align: center;
   width: 100%;
@@ -59,11 +56,38 @@ body {
 
   position: sticky;
   top: 0;
-
   background-color: var(--color-header-bg);
   backdrop-filter: blur(5px);
 }
 
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.footer {
+  width: 100%;
+  background-color: var(--color-header-bg);
+  backdrop-filter: blur(5px);
+  border-top: 1px solid #e0e0e0;
+  padding: var(--padding-large) 0;
+  margin-top: auto;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--padding-large);
+}
+
+/* ===== TYPOGRAPHY ===== */
 h3 {
   font-size: var(--font-size-large);
   color: var(--color-header-text);
@@ -71,6 +95,13 @@ h3 {
   font-weight: 700;
 }
 
+label {
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  color: var(--color-label);
+}
+
+/* ===== FORM ELEMENTS ===== */
 .inputs-container {
   display: flex;
   align-items: center;
@@ -80,20 +111,15 @@ h3 {
   justify-self: center;
 }
 
-label {
-  font-weight: 600;
-  font-size: var(--font-size-base);
-  color: var(--color-label);
-}
-
-/* Input and Button Styling */
 input[type="number"],
 button {
   border: 1px solid var(--color-input-border);
   border-radius: var(--border-radius);
   padding: var(--padding-base);
   font-size: var(--font-size-base);
-  transition: border-color 0.3s, background-color 0.3s;
+  transition:
+    border-color 0.3s,
+    background-color 0.3s;
 }
 
 button,
@@ -124,7 +150,7 @@ button:hover {
   background-color: var(--color-button-hover);
 }
 
-/* Output Container and Table Styling */
+/* ===== TABLE STYLES ===== */
 .output-container {
   min-width: 400px;
   margin-bottom: 50px;
@@ -163,14 +189,16 @@ button:hover {
   letter-spacing: 0.05rem;
 }
 
-/* Error Message Styling */
+/* ===== ERROR STATES ===== */
 .error {
   color: var(--color-error);
   font-size: var(--font-size-small);
   margin-top: 5px;
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
 }
 
 .error.visible {
@@ -182,8 +210,7 @@ button:hover {
   outline: 2px solid var(--color-error);
 }
 
-/* Add to the end of your CSS file */
-
+/* ===== PRINT CONTROLS ===== */
 .print-controls {
   text-align: center;
 }
@@ -197,7 +224,52 @@ button:hover {
   background-color: #219653;
 }
 
-/* Print Styles */
+/* ===== FOOTER SPECIFIC ===== */
+.github-profile a {
+  display: flex;
+  align-items: center;
+  gap: var(--padding-base);
+  text-decoration: none;
+  color: var(--color-text);
+  transition: color 0.3s ease;
+}
+
+.github-profile a:hover {
+  color: var(--color-button-bg);
+}
+
+.github-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--color-input-border);
+  transition: border-color 0.3s ease;
+}
+
+.github-profile a:hover .github-avatar {
+  border-color: var(--color-button-bg);
+}
+
+.github-username {
+  font-weight: 600;
+  font-size: var(--font-size-base);
+}
+
+.footer-text {
+  font-size: var(--font-size-base);
+  color: var(--color-label);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.heart {
+  color: #e74c3c;
+  display: inline-block;
+  font-size: 24px;
+}
+
+/* ===== PRINT STYLES ===== */
 @media print {
   body * {
     visibility: hidden;
@@ -245,20 +317,20 @@ button:hover {
   /* Hide header and other elements when printing */
   .header,
   .print-controls,
+  .footer,
   button {
     display: none !important;
   }
 }
 
-/* A4 page size styling for print preview */
 @page {
   size: A4;
   margin: 1cm;
 }
 
-/* Media Queries */
+/* ===== RESPONSIVE STYLES ===== */
 
-/* Small devices (phones, < 600px) */
+/* Mobile devices (phones, < 600px) */
 @media (max-width: 600px) {
   h3 {
     font-size: 20px;
@@ -290,9 +362,23 @@ button:hover {
     padding: 8px;
     font-size: 0.85rem;
   }
+
+  .footer-content {
+    flex-direction: column;
+    gap: var(--padding-large);
+    text-align: center;
+  }
+
+  .github-profile a {
+    justify-content: center;
+  }
+
+  .footer-text {
+    order: -1;
+  }
 }
 
-/* Medium devices (tablets, 601px - 1024px) */
+/* Tablet devices (601px - 1024px) */
 @media (min-width: 601px) and (max-width: 1024px) {
   h3 {
     font-size: 1.8rem;
@@ -307,5 +393,9 @@ button:hover {
   .table-container th,
   .table-container td {
     padding: 12px;
+  }
+
+  .footer-content {
+    padding: 0 var(--padding-xlarge);
   }
 }
