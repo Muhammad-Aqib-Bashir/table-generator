@@ -2,7 +2,7 @@
   /* Colors */
   --color-bg: #f4f6f8;
   --color-text: #333;
-  --color-header-bg: #f4f6f848;
+  --color-header-bg: #ffffff95;
   --color-header-text: #2c3e50;
   --color-label: #555;
   --color-input-border: #bbb;
@@ -46,18 +46,31 @@ body {
 
 /* ===== LAYOUT COMPONENTS ===== */
 .header {
-  text-align: center;
-  width: 100%;
-  border-bottom: var(--color-bg) solid 1px;
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
 
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 
   position: sticky;
   top: 0;
+
   background-color: var(--color-header-bg);
   backdrop-filter: blur(5px);
+}
+
+.header-left-side {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-left-side h3 {
+  font-size: 24px;
+  color: var(--color-header-text);
+  font-weight: 700;
+  margin: 0;
 }
 
 main {
@@ -87,14 +100,23 @@ main {
   padding: 0 var(--padding-large);
 }
 
-/* ===== TYPOGRAPHY ===== */
-h3 {
-  font-size: var(--font-size-large);
-  color: var(--color-header-text);
-  margin-bottom: var(--padding-xlarge);
-  font-weight: 700;
+/* ===== NAVIGATION ===== */
+.site-nav {
+  display: flex;
+  gap: var(--padding-base);
+  margin: 0;
 }
 
+.nav-link {
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== TYPOGRAPHY ===== */
 label {
   font-weight: 600;
   font-size: var(--font-size-base);
@@ -116,6 +138,7 @@ button {
   border: 1px solid var(--color-input-border);
   border-radius: var(--border-radius);
   padding: var(--padding-base);
+  font-family: inherit;
   font-size: var(--font-size-base);
   transition:
     border-color 0.3s,
@@ -153,7 +176,17 @@ button:hover {
 /* ===== TABLE STYLES ===== */
 .output-container {
   min-width: 400px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+}
+
+.output-container:has(.placeholder-text) {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-label);
+  font-size: var(--font-size-base);
+  text-align: center;
 }
 
 .table-container {
@@ -217,7 +250,6 @@ button:hover {
 
 .print-btn {
   background-color: #27ae60;
-  margin-top: var(--padding-base);
 }
 
 .print-btn:hover {
@@ -246,6 +278,7 @@ button:hover {
   transition: border-color 0.3s ease;
 }
 
+.logo,
 .github-profile a:hover .github-avatar {
   border-color: var(--color-button-bg);
 }
