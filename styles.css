@@ -250,10 +250,50 @@ button:hover {
 
 .print-btn {
   background-color: #27ae60;
+  color: #fff;
+  border: none;
+  padding: 0.6em 1.2em;
+  font-size: 1rem;
+  border-radius: 5px;
+  position: relative;
+  transition: background-color 0.2s ease;
 }
 
 .print-btn:hover {
   background-color: #219653;
+}
+
+/* Disabled button styling */
+.print-btn:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+  pointer-events: auto; /* allows hover tooltip */
+}
+
+/* Tooltip for disabled button */
+.print-btn:disabled::after {
+  content: "Generate a table to enable printing";
+  font-size: 0.85rem;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 0.4em 0.6em;
+  border-radius: 4px;
+  display: block;
+
+  position: absolute;
+  bottom: -40px; /* distance below button */
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+/* Show tooltip on hover */
+.print-btn:disabled:hover::after {
+  opacity: 1;
 }
 
 /* ===== FOOTER SPECIFIC ===== */

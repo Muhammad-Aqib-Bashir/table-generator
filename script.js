@@ -32,8 +32,8 @@ function generateTable() {
   fromInput.classList.remove("error-input");
   boundryInput.classList.remove("error-input");
 
-  // Hide print button initially
-  printBtn.style.display = "none";
+  // Disable print button
+  printBtn.disabled = true;
 
   // Validation logic
   const isValidNumber =
@@ -109,8 +109,8 @@ function generateTable() {
 
   tableContainer.innerHTML = tableHTML;
 
-  // Show print button after table is generated
-  printBtn.style.display = "inline-block";
+  // Enable print button after table generation
+  printBtn.disabled = false;
 }
 
 function printTable() {
