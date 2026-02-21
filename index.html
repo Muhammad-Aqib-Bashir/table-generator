@@ -113,6 +113,7 @@
       src="https://www.googletagmanager.com/gtag/js?id=G-EPNVMBMHW4"
     ></script>
     <script>
+      // Initialize GA4
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
@@ -120,6 +121,67 @@
       gtag("js", new Date());
 
       gtag("config", "G-EPNVMBMHW4");
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // Table generator elements
+        const numberInput = document.querySelector(".js.table-number");
+        const fromInput = document.querySelector(".js.table-from");
+        const boundryInput = document.querySelector(".js.table-boundry");
+        const writeBtn = document.querySelector(".js.write-btn");
+        const printBtn = document.querySelector(".js.print-btn");
+
+        // GitHub profile elements
+        const githubProfile = document.querySelector(".github-profile a");
+
+        if (
+          !numberInput ||
+          !fromInput ||
+          !boundryInput ||
+          !writeBtn ||
+          !printBtn
+        ) {
+          console.warn("GA4: some elements not found.");
+          return;
+        }
+
+        // ---- Table Generator Tracking ----
+        writeBtn.addEventListener("click", () => {
+          gtag("event", "table_generated", {
+            number: numberInput.value,
+            from: fromInput.value,
+            to: boundryInput.value,
+          });
+        });
+
+        printBtn.addEventListener("click", () => {
+          gtag("event", "table_printed", {
+            number: numberInput.value,
+          });
+        });
+
+        printBtn.addEventListener("mouseenter", () => {
+          if (printBtn.disabled) {
+            gtag("event", "print_hover_disabled");
+          }
+        });
+
+        // ---- GitHub Profile Tracking ----
+        if (githubProfile) {
+          // Track clicks
+          githubProfile.addEventListener("click", () => {
+            gtag("event", "github_profile_clicked", {
+              profile_url: githubProfile.href,
+            });
+          });
+
+          // Track hover
+          githubProfile.addEventListener("mouseenter", () => {
+            gtag("event", "github_profile_hovered", {
+              profile_url: githubProfile.href,
+            });
+          });
+        }
+      });
     </script>
   </head>
   <body>
