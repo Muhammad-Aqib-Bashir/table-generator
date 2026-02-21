@@ -1,5 +1,5 @@
-const MAX_TABLE_NUMBER = 10000; // Maximum number for table generation
-const MAX_BOUNDARY = 500; // Maximum limit for table expressions
+const MAX_TABLE_NUMBER = 100000; // Maximum number for table generation
+const MAX_BOUNDARY = 50000; // Maximum limit for table expressions
 const MIN_VALUE = 1; // Minimum value for inputs
 
 const numberInput = document.querySelector(".js.table-number");
