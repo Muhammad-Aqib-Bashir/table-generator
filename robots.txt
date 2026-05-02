@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://multiplication-table-generator-free.netlify.app/sitemap.xml
+Sitemap: https://muhammad-aqib-bashir.github.io/table-generator/sitemap.xml
