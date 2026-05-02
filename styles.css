@@ -66,7 +66,7 @@ body {
   gap: 8px;
 }
 
-.header-left-side h3 {
+.header-left-side h1 {
   font-size: 24px;
   color: var(--color-header-text);
   font-weight: 700;
@@ -98,7 +98,7 @@ main {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   gap: 40px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-brand .footer-logo-row {
@@ -112,7 +112,7 @@ main {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 2px solid rgba(52,152,219,0.6);
+  border: 2px solid rgba(52, 152, 219, 0.6);
 }
 
 .footer-brand .footer-site-name {
@@ -139,19 +139,22 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: #cbd5e1;
   text-decoration: none;
   padding: 7px 14px;
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 500;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s;
 }
 
 .footer-social-links a:hover {
-  background: rgba(52,152,219,0.25);
+  background: rgba(52, 152, 219, 0.25);
   border-color: #3498db;
   color: #fff;
 }
@@ -191,7 +194,9 @@ main {
   font-size: 0.75rem;
   opacity: 0;
   transform: translateX(-4px);
-  transition: opacity 0.2s, transform 0.2s;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
 }
 
 .footer-col ul li a:hover {
@@ -595,7 +600,9 @@ button:hover {
     padding: 14px 20px;
   }
 
-  .footer-brand p { max-width: 100%; }
+  .footer-brand p {
+    max-width: 100%;
+  }
 }
 
 /* Tablet devices (601px - 1024px) */
