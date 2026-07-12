@@ -18,6 +18,12 @@ boundryInput.setAttribute("max", MAX_BOUNDARY);
 document.addEventListener("DOMContentLoaded", () => {
   writeBtn.addEventListener("click", generateTable);
   printBtn.addEventListener("click", printTable);
+
+  printBtn.addEventListener("mouseenter", () => {
+    if (printBtn.disabled && window.trackEvent) {
+      window.trackEvent("print_hover_disabled");
+    }
+  });
 });
 
 function generateTable() {
@@ -111,8 +117,19 @@ function generateTable() {
 
   // Enable print button after table generation
   printBtn.disabled = false;
+
+  if (window.trackEvent) {
+    window.trackEvent("table_generated", {
+      number: tableNumber,
+      from: tableFrom,
+      to: tableBoundry,
+    });
+  }
 }
 
 function printTable() {
   window.print();
+  if (window.trackEvent) {
+    window.trackEvent("table_printed", { number: Number(numberInput.value) });
+  }
 }

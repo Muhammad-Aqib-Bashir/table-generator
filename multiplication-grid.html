@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="logo.png" type="image/png" />
+
+    <title>Multiplication Table Grid 1–20</title>
+
+    <meta
+      name="description"
+      content="Explore an interactive 1–20 multiplication grid. Hover, tap, or select a row and column to instantly see the multiplication result highlighted on the chart."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="https://github.com/Muhammad-Aqib-Bashir" />
+    <meta
+      name="keywords"
+      content="multiplication grid, multiplication chart 1-20, times table grid, interactive multiplication table, 20x20 multiplication chart, multiplication chart generator, times table chart, multiplication table 1 to 20"
+    />
+
+    <link
+      rel="canonical"
+      href="https://muhammad-aqib-bashir.github.io/table-generator/multiplication-grid.html"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Multiplication Grid 1–20 | Interactive Times Table Chart"
+    />
+    <meta
+      property="og:description"
+      content="Hover, tap, or select a row and column to instantly find any multiplication result on an interactive 1–20 grid."
+    />
+    <meta
+      property="og:url"
+      content="https://muhammad-aqib-bashir.github.io/table-generator/multiplication-grid.html"
+    />
+    <meta
+      property="og:image"
+      content="https://muhammad-aqib-bashir.github.io/table-generator/screenshots/demo.png"
+    />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Multiplication Grid 1–20 | Interactive Times Table Chart"
+    />
+    <meta
+      name="twitter:description"
+      content="An interactive 1–20 multiplication grid — hover or select a row and column to instantly see the result."
+    />
+    <meta
+      name="twitter:image"
+      content="https://muhammad-aqib-bashir.github.io/table-generator/screenshots/demo.png"
+    />
+
+    <!-- Structured Data: WebApplication -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Interactive Multiplication Grid",
+        "url": "https://muhammad-aqib-bashir.github.io/table-generator/multiplication-grid.html",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "All",
+        "description": "Interactive 1-20 multiplication grid. Hover, tap, or select a row and column to instantly see the multiplication result highlighted on the chart.",
+        "author": {
+          "@type": "Person",
+          "name": "Muhammad Aqib Bashir",
+          "url": "https://github.com/Muhammad-Aqib-Bashir"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "datePublished": "2026-07-12",
+        "dateModified": "2026-07-12"
+      }
+    </script>
+
+    <!-- Structured Data: FAQ -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I use the multiplication grid?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Hover over any cell with a mouse, tap a cell on a touchscreen, or choose a row and column from the dropdowns above the grid. The matching row, column, and result are highlighted instantly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What range does the multiplication grid cover?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The grid covers every combination from 1 to 20, giving you a complete 20 by 20 times table chart."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the grid work on mobile devices?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The grid is fully responsive and supports tapping cells directly, as well as the row and column selectors, on any screen size."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Page-specific styles -->
+    <style>
+      .grid-page {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .grid-intro {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto 28px;
+      }
+
+      .grid-intro h1 {
+        font-size: 2rem;
+        color: var(--color-primary-dark);
+        margin-bottom: 12px;
+      }
+
+      .grid-intro p {
+        color: var(--color-label);
+        line-height: 1.6;
+      }
+
+      .grid-controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .grid-control {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .grid-control select {
+        border: 1px solid var(--color-input-border);
+        border-radius: var(--border-radius);
+        padding: 8px 10px;
+        font-size: 1rem;
+        min-width: 70px;
+        background: #fff;
+      }
+
+      .grid-control select:focus {
+        outline: 2px solid var(--color-input-focus);
+      }
+
+      .grid-readout {
+        text-align: center;
+        min-height: 32px;
+        font-size: 1.2rem;
+        color: var(--color-label);
+        margin-bottom: 18px;
+      }
+
+      .grid-readout.has-result strong {
+        color: var(--color-button-bg);
+        font-size: 1.4rem;
+      }
+
+      .grid-scroll {
+        overflow-x: auto;
+        border-radius: 10px;
+        box-shadow: var(--shadow-default);
+        margin-bottom: 40px;
+      }
+
+      .mult-grid {
+        border-collapse: collapse;
+        width: 100%;
+        min-width: 780px;
+        background: #fff;
+      }
+
+      .mult-grid th,
+      .mult-grid td {
+        text-align: center;
+        padding: 8px 6px;
+        font-size: 0.85rem;
+        border: 1px solid #e6e9ec;
+        color: var(--color-table-text);
+      }
+
+      .mult-grid thead th {
+        background: var(--color-table-header-bg);
+        color: #fff;
+        font-weight: 700;
+        position: sticky;
+        top: 0;
+      }
+
+      .grid-corner {
+        position: sticky;
+        left: 0;
+        z-index: 3;
+      }
+
+      .grid-row-header {
+        background: var(--color-table-header-bg);
+        color: #fff;
+        font-weight: 700;
+        position: sticky;
+        left: 0;
+        z-index: 2;
+      }
+
+      .mult-grid td.hl-row,
+      .mult-grid td.hl-col,
+      th.hl-row,
+      th.hl-col {
+        background-color: var(--color-highlight, #e3f2fd);
+      }
+
+      .mult-grid td.hl-active {
+        background-color: var(--color-button-bg) !important;
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .grid-info {
+        max-width: 780px;
+        margin: 0 auto 48px;
+      }
+
+      .grid-info h2 {
+        font-size: 1.4rem;
+        color: var(--color-primary-dark);
+        margin-bottom: 12px;
+      }
+
+      .grid-info p,
+      .grid-info li {
+        color: var(--color-text);
+        line-height: 1.6;
+      }
+
+      .grid-info ul {
+        margin: 0 0 24px;
+        padding-left: 20px;
+      }
+
+      .grid-faq h3 {
+        font-size: 1.05rem;
+        color: var(--color-primary-dark);
+        margin: 20px 0 6px;
+      }
+
+      .grid-cta {
+        text-align: center;
+        margin: 40px auto 0;
+      }
+
+      .grid-cta a {
+        display: inline-block;
+        text-decoration: none;
+        background: var(--color-button-bg);
+        color: #fff;
+        font-weight: 600;
+        padding: 12px 28px;
+        border-radius: 8px;
+        transition: background-color 0.2s ease;
+      }
+
+      .grid-cta a:hover {
+        background: var(--color-button-hover);
+      }
+
+      @media (max-width: 600px) {
+        .grid-intro h1 {
+          font-size: 1.5rem;
+        }
+
+        .grid-controls {
+          gap: 10px;
+        }
+      }
+
+      @media print {
+        .grid-controls,
+        .grid-info,
+        .grid-cta {
+          display: none !important;
+        }
+      }
+    </style>
+
+    <!-- Site-wide analytics & tracking (single shared script, see analytics.js) -->
+    <script src="analytics.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-left-side">
+        <img src="./logo.png" alt="logo" class="logo github-avatar" />
+        <h3>Multiplication Table Generator</h3>
+      </div>
+
+      <!-- nav links -->
+      <nav class="site-nav">
+        <a href="index.html" class="nav-link">Table Generator</a>
+        <a
+          href="multiplication-grid.html"
+          class="nav-link active"
+          aria-current="page"
+          >Multiplication Grid</a
+        >
+        <a href="learning-guide.html" class="nav-link">Learning Guide</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="grid-page">
+        <div class="grid-intro">
+          <h1>Interactive Multiplication Grid (1–20)</h1>
+          <p>
+            A complete 20 × 20 times table chart. Hover or tap any cell — or
+            pick a row and column below — to instantly highlight the matching
+            row, column, and result.
+          </p>
+        </div>
+
+        <div class="grid-controls">
+          <div class="grid-control">
+            <label for="row-select">Row</label>
+            <select id="row-select" class="js row-select">
+              <option value="">–</option>
+            </select>
+          </div>
+          <div class="grid-control">
+            <label for="col-select">Column</label>
+            <select id="col-select" class="js col-select">
+              <option value="">–</option>
+            </select>
+          </div>
+        </div>
+
+        <p class="grid-readout js grid-readout" aria-live="polite">
+          Hover or select a row and column to see the result.
+        </p>
+
+        <div class="grid-scroll">
+          <table
+            class="mult-grid"
+            aria-label="Multiplication grid from 1 to 20"
+          >
+            <thead>
+              <tr class="js grid-head-row"></tr>
+            </thead>
+            <tbody class="js grid-body"></tbody>
+          </table>
+        </div>
+
+        <section class="grid-info">
+          <h2>How to Use This Grid</h2>
+          <ul>
+            <li>
+              <strong>Hover</strong> over any cell with your mouse to see its
+              row, column, and result highlighted.
+            </li>
+            <li>
+              <strong>Tap</strong> a cell on a touchscreen device to select and
+              highlight it.
+            </li>
+            <li>
+              <strong>Choose a row and column</strong> from the dropdowns for a
+              fully keyboard-accessible way to find any result.
+            </li>
+          </ul>
+
+          <h2>Why Use a Multiplication Grid?</h2>
+          <p>
+            A multiplication grid lays out every product from 1×1 to 20×20 in
+            one place, making it easy to spot patterns like square numbers on
+            the diagonal or the symmetry between rows and columns. It's a handy
+            visual reference for practicing times tables, checking homework, or
+            building number sense beyond the standard 1–12 range.
+          </p>
+
+          <div class="grid-faq">
+            <h2>Frequently Asked Questions</h2>
+
+            <h3>How do I use the multiplication grid?</h3>
+            <p>
+              Hover over any cell with a mouse, tap a cell on a touchscreen, or
+              choose a row and column from the dropdowns above the grid. The
+              matching row, column, and result are highlighted instantly.
+            </p>
+
+            <h3>What range does the multiplication grid cover?</h3>
+            <p>
+              The grid covers every combination from 1 to 20, giving you a
+              complete 20 by 20 times table chart.
+            </p>
+
+            <h3>Does the grid work on mobile devices?</h3>
+            <p>
+              Yes. The grid is fully responsive and supports tapping cells
+              directly, as well as the row and column selectors, on any screen
+              size.
+            </p>
+          </div>
+        </section>
+
+        <div class="grid-cta">
+          <a href="index.html">Generate a Custom Table Instead →</a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img
+              src="logo.png"
+              alt="Multiplication Table Generator logo"
+              class="footer-logo"
+            />
+            <div>
+              <p class="footer-brand-name">Multiplication Table Generator</p>
+              <p class="footer-tagline">
+                Free, fast tools for generating and learning multiplication
+                tables — built for students and teachers.
+              </p>
+            </div>
+          </div>
+
+          <nav class="footer-links" aria-label="Footer">
+            <div class="footer-links-col">
+              <h4>Explore</h4>
+              <ul>
+                <li><a href="index.html">Table Generator</a></li>
+                <li>
+                  <a href="multiplication-grid.html">Multiplication Grid</a>
+                </li>
+                <li><a href="learning-guide.html">Learning Guide</a></li>
+              </ul>
+            </div>
+            <div class="footer-links-col">
+              <h4>Project</h4>
+              <ul>
+                <li>
+                  <a
+                    href="https://github.com/Muhammad-Aqib-Bashir/table-generator"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Source Code</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/Muhammad-Aqib-Bashir/table-generator/blob/main/LICENSE"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >MIT License</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/Muhammad-Aqib-Bashir"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >GitHub Profile</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; <span id="footer-year"></span> Muhammad Aqib Bashir. All
+            rights reserved.
+          </p>
+          <p class="footer-text">
+            Made with <span class="heart">♥</span> for students &amp; teachers
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="grid.js"></script>
+  </body>
+</html>
