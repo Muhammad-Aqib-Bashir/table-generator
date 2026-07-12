@@ -12,7 +12,6 @@
  *      page-specific script (script.js, grid.js, etc.) can call
  *   3. Automatic tracking of outbound link clicks (GitHub, license, etc.)
  *   4. Automatic tracking of internal nav clicks
- *   5. Small shared UI helpers used across pages (e.g. footer year)
  *
  * To change the GA4 property, or add a new tracked interaction that
  * should apply site-wide, do it here ONCE instead of editing every page.
@@ -27,8 +26,7 @@
   // ---- 1. Load & initialize GA4 -----------------------------------------
   var gaScript = document.createElement("script");
   gaScript.async = true;
-  gaScript.src =
-    "https://www.googletagmanager.com/gtag/js?id=" + GA_MEASUREMENT_ID;
+  gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_MEASUREMENT_ID;
   document.head.appendChild(gaScript);
 
   window.dataLayer = window.dataLayer || [];
@@ -57,8 +55,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     // Track every outbound (external) link click site-wide
     document.querySelectorAll('a[href^="http"]').forEach(function (link) {
-      var isExternal =
-        link.hostname && link.hostname !== window.location.hostname;
+      var isExternal = link.hostname && link.hostname !== window.location.hostname;
       if (!isExternal) return;
 
       link.addEventListener("click", function () {
@@ -69,21 +66,14 @@
       });
     });
 
-    // Track internal navigation (header + footer links)
-    document
-      .querySelectorAll(".site-nav a, .footer-links a[href$='.html']")
-      .forEach(function (link) {
-        link.addEventListener("click", function () {
-          window.trackEvent("internal_nav_click", {
-            link_url: link.getAttribute("href"),
-            link_text: link.textContent.trim(),
-          });
+    // Track internal navigation (header nav links)
+    document.querySelectorAll(".site-nav a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        window.trackEvent("internal_nav_click", {
+          link_url: link.getAttribute("href"),
+          link_text: link.textContent.trim(),
         });
       });
-
-    // Shared UI helper: fill in the current year wherever #footer-year exists
-    document.querySelectorAll("#footer-year").forEach(function (el) {
-      el.textContent = new Date().getFullYear();
     });
   });
 })();
